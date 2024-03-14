@@ -1,0 +1,50 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="contactForm">
+    <h4>Contact Us!</h4>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" 
+        placeholder="Enter your name." name="Name" [(ngModel)] = "customerIF.name" 
+        required #nameField="ngModel"
+        (blur)="onBlur(nameField)"
+        [class.field-error]="form.submitted && nameField.invalid">
+        <div [hidden]="form.submitted|| nameField.valid"
+        class="alert alert-danger">
+        Enter a name
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com"name="Email" [(ngModel)] = "customerIF.email">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput3" class="form-label">Age</label>
+        <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Enter your age."name="Age" [(ngModel)] = "customerIF.age">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea4" class="form-label">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"name="Message" [(ngModel)] = "customerIF.message"></textarea>
+    </div>
+
+    <select class="form-select" aria-label="Default select example"name="Municipio" [(ngModel)] = "customerIF.municipio">
+    <option *ngFor="let type of subscriptionTypes | async">
+        {{type}}
+    </option>
+        <!-- <option value="Monterrey">Monterrey</option>
+        <option value="Guadalupe">Guadalupe</option>
+        <option value="San Nicolas">San Nicolas</option>
+        <option value="Apodaca">Apodaca</option>
+        <option value="Juarez">Juarez</option>
+        <option value="Santa Catarina">Santa Catarina</option>
+        <option value="San Pedro">San Pedro</option>
+        <option value="Escobedo">Escobedo</option> -->
+    </select>
+
+    <input class="btn btn-primary" type="submit" value="Submit">
+    
+</form>   
+
+{{customerIF | json}}

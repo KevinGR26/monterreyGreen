@@ -1,0 +1,11 @@
+.infoArea p{
+    margin: 20px 0px;
+}
+
+.imgContainer{
+    display: flex;
+    justify-content: center;
+}
+.imgContainer img{
+    margin: 0px 20px;
+}
